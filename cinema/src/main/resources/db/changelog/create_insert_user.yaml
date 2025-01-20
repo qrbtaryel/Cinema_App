@@ -1,0 +1,105 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Taryel
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: surname
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: patronymic
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: decimal(19,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: birthdate
+                  type: date
+                  constraints:
+                    nullable: false
+        - setColumnRemarks:
+            tableName: users
+            columnName: name
+            remarks: "istifadecinin adi"
+        - setColumnRemarks:
+            tableName: users
+            columnName: surname
+            remarks: "istifadecinin soyadi"
+        - setColumnRemarks:
+            tableName: users
+            columnName: patronymic
+            remarks: "ata adi"
+        - setColumnRemarks:
+            tableName: users
+            columnName: username
+            remarks: "Istifadeci adi"
+        - setColumnRemarks:
+            tableName: users
+            columnName: password
+            remarks: "istifadeci passwordu"
+        - setColumnRemarks:
+            tableName: users
+            columnName: balance
+            remarks: "istifadecinin balansi"
+        - setColumnRemarks:
+            tableName: users
+            columnName: birthdate
+            remarks: "istifadecinin dogum tarixi"
+
+  - changeSet:
+      id: 2
+      author: Taryel
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: name, value: "Ali" }
+              - column: { name: surname, value: "Aliyev" }
+              - column: { name: patronymic, value: "Hasan" }
+              - column: { name: username, value: "ali123" }
+              - column: { name: password, value: "$2a$12$rwYDhHwaJvDjVelM6bxIEuH4To2nEQtCAH.0tKdPN7la10nNKQaLm" } #password123
+              - column: { name: balance, value: 100.00 }
+              - column: { name: birthdate, value: "1990-05-12" }
+
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: name, value: "Veli" }
+              - column: { name: surname, value: "Veliyev" }
+              - column: { name: patronymic, value: "Kerim" }
+              - column: { name: username, value: "veli456" }
+              - column: { name: password, value: "$2a$12$rwYDhHwaJvDjVelM6bxIEuH4To2nEQtCAH.0tKdPN7la10nNKQaLm" }
+              - column: { name: balance, value: 100.00 }
+              - column: { name: birthdate, value: "1985-03-25" }

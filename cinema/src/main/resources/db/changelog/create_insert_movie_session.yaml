@@ -1,0 +1,89 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: yourname
+      changes:
+        - createTable:
+            tableName: movie_session
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: hall_id
+                  type: bigint
+              - column:
+                  name: movie_id
+                  type: bigint
+              - column:
+                  name: dubbing_language_id
+                  type: bigint
+              - column:
+                  name: session_id
+                  type: bigint
+
+  - changeSet:
+      id: 2
+      author: yourname
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: movie_session
+            baseColumnNames: hall_id
+            constraintName: fk_movie_session_hall
+            referencedTableName: halls
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: movie_session
+            baseColumnNames: movie_id
+            constraintName: fk_movie_session_movie
+            referencedTableName: movies
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: movie_session
+            baseColumnNames: dubbing_language_id
+            constraintName: fk_movie_session_language
+            referencedTableName: language
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+        - addForeignKeyConstraint:
+            baseTableName: movie_session
+            baseColumnNames: session_id
+            constraintName: fk_movie_session_session
+            referencedTableName: sessions
+            referencedColumnNames: id
+            onDelete: CASCADE
+
+  - changeSet:
+      id: 3
+      author: yourname
+      changes:
+        - insert:
+            tableName: movie_session
+            columns:
+              - column: { name: date, value: "2025-01-05T18:00:00" }
+              - column: { name: hall_id, value: 1 }
+              - column: { name: movie_id, value: 1 }
+              - column: { name: dubbing_language_id, value: 1 }
+              - column: { name: session_id, value: 1 }
+        - insert:
+            tableName: movie_session
+            columns:
+              - column: { name: date, value: "2025-02-10T18:00:00" }
+              - column: { name: hall_id, value: 1 }
+              - column: { name: movie_id, value: 1 }
+              - column: { name: dubbing_language_id, value: 1 }
+              - column: { name: session_id, value: 2 }

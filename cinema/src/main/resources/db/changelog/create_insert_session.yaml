@@ -1,0 +1,60 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-create-session-table
+      author: Taryel
+      changes:
+        - createTable:
+            tableName: sessions
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: surcharge_rate
+                  type: double
+        - setColumnRemarks:
+            tableName: sessions
+            columnName: name
+            remarks: "Sessianin adi"
+        - setColumnRemarks:
+            tableName: sessions
+            columnName: surcharge_rate
+            remarks: "Əlavə ödəniş"
+
+  - changeSet:
+      id: 2-insert-session-data
+      author: Taryel
+      changes:
+        - insert:
+            tableName: sessions
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: "Morning Session"
+              - column:
+                  name: surcharge_rate
+                  value: 15.0
+        - insert:
+            tableName: sessions
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: "Evening Session"
+              - column:
+                  name: surcharge_rate
+                  value: 35.0

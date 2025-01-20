@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/create_insert_user.yaml
+  - include:
+      file: db/changelog/create_insert_genre.yaml
+  - include:
+      file: db/changelog/create_insert_hall.yaml
+  - include:
+      file: db/changelog/create_insert_seat.yaml
+  - include:
+      file: db/changelog/create_insert_language.yaml
+  - include:
+      file: db/changelog/create_insert_session.yaml
+  - include:
+      file: db/changelog/create_insert_movie.yaml
+  - include:
+      file: db/changelog/create_insert_movie_session.yaml
+  - include:
+      file: db/changelog/create_insert_ticket.yaml

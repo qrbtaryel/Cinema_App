@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Taryel
+      changes:
+        - createTable:
+            tableName: halls
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: Hall_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: max_seat_capacity
+                  type: int
+  - changeSet:
+      id: 2
+      author: Taryel
+      changes:
+        - insert:
+            tableName: halls
+            columns:
+              - column: { name: id, value: 1 }
+              - column: { name: hall_name, value: "Hall A" }
+              - column: { name: max_seat_capacity, value: 30 }
+        - insert:
+            tableName: halls
+            columns:
+              - column: { name: id, value: 2 }
+              - column: { name: hall_name, value: "Hall B" }
+              - column: { name: max_seat_capacity, value: 30 }
+        - insert:
+            tableName: halls
+            columns:
+              - column: { name: id, value: 3 }
+              - column: { name: hall_name, value: "Hall C" }
+              - column: { name: max_seat_capacity, value: 30 }

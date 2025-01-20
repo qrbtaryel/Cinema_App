@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: cinema
+  datasource:
+    url: jdbc:h2:mem:cinema
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+
+server:
+  port: 8585
+  error:
+    include-stacktrace: always
+    include-message: always
+
+jwt:
+  access_token_time: 3600000
+  access_secret_key: TWVldCBCYXNlNjQgRGVjb2RlIGFuZCBFbmNvZGUsIGEgc2ltcGxlIG9ubGluZSB0b29sIHRoYXQgZG9lcyBleGFjdGx5IHdoYX
+  refresh_token_time: 7200000
+  refresh_secret_key: QgaXQgc2F5czogZGVjb2RlcyBmcm9tIEJhc2U2NCBlbmNvZGluZyBhcyB3ZWxsIGFzIGVuY29kZXMgaW50byBpdCBxdWlja2x5IGFuZCBlYXNpbHku

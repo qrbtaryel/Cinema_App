@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Taryel
+      changes:
+        - createTable:
+            tableName: language
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: Taryel
+      changes:
+        - insert:
+            tableName: language
+            columns:
+              - column: { name: id, value: 1 }
+              - column: { name: name, value: "English" }
+
+        - insert:
+            tableName: language
+            columns:
+              - column: { name: id, value: 2 }
+              - column: { name: name, value: "Russian" }
+
+        - insert:
+            tableName: language
+            columns:
+              - column: { name: id, value: 3 }
+              - column: { name: name, value: "Turkish" }

@@ -1,0 +1,115 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: Taryel
+      changes:
+        - createTable:
+            tableName: seats
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: seat_number
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: hall_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_seat_hall
+                    references: halls(id)
+
+  - changeSet:
+      id: 4
+      author: Taryel
+      changes:
+        # Hall A Seats
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 1 }
+              - column: { name: hall_id, value: 1 }
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 2 }
+              - column: { name: hall_id, value: 1 }
+
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 3 }
+              - column: { name: hall_id, value: 1 }
+
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 4 }
+              - column: { name: hall_id, value: 1 }
+
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 5 }
+              - column: { name: hall_id, value: 1 }
+        # ... repeat for seats 3 to 30 for Hall A
+
+        # Hall B Seats
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 1 }
+              - column: { name: hall_id, value: 2 }
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 2 }
+              - column: { name: hall_id, value: 2 }
+
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 3 }
+              - column: { name: hall_id, value: 2 }
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 4 }
+              - column: { name: hall_id, value: 2 }
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 5 }
+              - column: { name: hall_id, value: 2 }
+        # ... repeat for seats 2 to 30 for Hall B
+
+        # Hall C Seats
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 1 }
+              - column: { name: hall_id, value: 3 }
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 2 }
+              - column: { name: hall_id, value: 3 }
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 3 }
+              - column: { name: hall_id, value: 3 }
+        - insert:
+            tableName: seats
+            columns:
+              - column: { name: seat_number, value: 4 }
+              - column: { name: hall_id, value: 3 }
+        # ... repeat for seats 2 to 30 for Hall C
+

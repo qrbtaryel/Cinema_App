@@ -1,0 +1,97 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: yourname
+      changes:
+        - createTable:
+            tableName: movies
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: duration_in_min
+                  type: int
+              - column:
+                  name: author
+                  type: varchar(255)
+              - column:
+                  name: movie_description
+                  type: varchar(1000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_age
+                  type: int
+              - column:
+                  name: imdb_rate
+                  type: double
+                  constraints:
+                    nullable: false
+              - column:
+                  name: realise_year
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: yourname
+      changes:
+        - createTable:
+            tableName: movie_genres
+            columns:
+              - column:
+                  name: movie_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_movie
+                    references: movies(id)
+              - column:
+                  name: genre_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_genre
+                    references: genre(id)
+
+
+  - changeSet:
+      id: 3
+      author: yourname
+      changes:
+        - insert:
+            tableName: movies
+            columns:
+              - column: { name: name, value: "The Matrix" }
+              - column: { name: duration_in_min, value: 136 }
+              - column: { name: author, value: "Lana Wachowski" }
+              - column: { name: movie_description, value: "A science fiction classic." }
+              - column: { name: user_age, value: 16 }
+              - column: { name: imdb_rate, value: 8.7 }
+              - column: { name: realise_year, value: 1999 }
+              - column: { name: status, value: 0 }
+
+  - changeSet:
+      id: 4
+      author: yourname
+      changes:
+        - insert:
+            tableName: movie_genres
+            columns:
+              - column: { name: movie_id, value: 1 }
+              - column: { name: genre_id, value: 1 } # Ensure genre with id 1 exists in genres.yaml

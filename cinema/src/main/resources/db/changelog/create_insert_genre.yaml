@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1735907479996-3
+      author: Taryel
+      changes:
+        - createTable:
+            tableName: genre
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: Taryel
+      changes:
+        - insert:
+            tableName: genre
+            columns:
+              - column: { name: name, value: "Fiction" }
+        - insert:
+            tableName: genre
+            columns:
+              - column: { name: name, value: "Non-Fiction" }
+        - insert:
+            tableName: genre
+            columns:
+              - column: { name: name, value: "Science Fiction" }
+        - insert:
+            tableName: genre
+            columns:
+              - column: { name: name, value: "Fantasy" }
